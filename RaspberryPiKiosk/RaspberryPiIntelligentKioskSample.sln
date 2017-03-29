@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadDeviceToCloudMessages",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5E699A7-9929-40F9-9039-9498877E319C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{99590EF2-BABE-415F-9E57-AEE29DDA99DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{5D9320AF-A9E4-48E3-89BC-9F7F0954B298} = {99590EF2-BABE-415F-9E57-AEE29DDA99DF}
 		{1FE62944-3A10-43B0-88FD-39771B33DDF4} = {E5E699A7-9929-40F9-9039-9498877E319C}
 		{AAA0E9B2-E9FC-45E5-88DA-A59602F89DD8} = {E5E699A7-9929-40F9-9039-9498877E319C}
 	EndGlobalSection

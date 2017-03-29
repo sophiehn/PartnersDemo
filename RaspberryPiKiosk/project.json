@@ -1,6 +1,7 @@
 ﻿{
   "dependencies": {
     "Emmellsoft.IoT.RPi.SenseHat": "0.1.0.10",
+    "Microsoft.Azure.Devices.Client.PCL": "1.0.16",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Microsoft.ProjectOxford.Emotion": "1.0.336",
     "Microsoft.ProjectOxford.Face": "1.2.1.2",

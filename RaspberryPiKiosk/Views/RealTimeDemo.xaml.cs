@@ -47,11 +47,44 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
+using Microsoft.Azure.Devices.Client;
+using Newtonsoft.Json;
+using System.Text;
+using System.Collections;
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace IntelligentKioskSample.Views
 {
+
+    public class Class1
+    {
+        DeviceClient deviceClient;
+        string iotHubUri = "PartnersHub.azure-devices.net";
+        string deviceKey = "qcE/mE8D63k0w4o0+muPXNk9Fzlwhvyo8EtVPLZ14m0=";
+
+
+        public void Main(IEnumerable<KeyValuePair<string, float>> emotion)
+        {
+            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("RBPi3", deviceKey), TransportType.Http1);
+            SendDeviceToCloudMessagesAsync(emotion);
+        }
+
+        private async void SendDeviceToCloudMessagesAsync(IEnumerable<KeyValuePair<string, float>> emotion)
+        {
+            string messageString = "Emotions Detected";
+            var message = new Message(Encoding.ASCII.GetBytes(messageString));
+
+            foreach (var item in emotion)
+            {
+                message.Properties.Add(item.Key, item.Value.ToString("0.000"));
+            }
+            
+            await deviceClient.SendEventAsync(message);
+
+        }
+
+    }
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -101,7 +134,6 @@ namespace IntelligentKioskSample.Views
             }
         }
 
-
         private async void ProcessingLoop()
         {
             while (this.isProcessingLoopInProgress)
@@ -147,7 +179,6 @@ namespace IntelligentKioskSample.Views
                 this.lastSimilarPersistedFaceSample = null;
                 this.lastEmotionSample = null;
                 this.debugText.Text = "";
-
                 this.isProcessingPhoto = false;
                 return;
             }
@@ -179,6 +210,8 @@ namespace IntelligentKioskSample.Views
                 };
 
                 this.emotionDataTimelineControl.DrawEmotionData(averageScores);
+                CommunicateWithIoTHub emotions = new CommunicateWithIoTHub();
+                emotions.SendEmotions(averageScores.ToRankedList());
             }
 
             if (e.DetectedFaces == null || !e.DetectedFaces.Any())
@@ -216,8 +249,9 @@ namespace IntelligentKioskSample.Views
             this.debugText.Text = string.Format("Latency: {0}ms", (int)(DateTime.Now - start).TotalMilliseconds);
 
             this.isProcessingPhoto = false;
-        }
 
+        }
+        
         private void ShowTimelineFeedbackForNoFaces()
         {
             this.emotionDataTimelineControl.DrawEmotionData(new EmotionScores { Neutral = 1 });
@@ -322,7 +356,7 @@ namespace IntelligentKioskSample.Views
 
                 if (demographicsChanged)
                 {
-                  //  FillDisplayBlocks();
+                    //  FillDisplayBlocks();
                     this.ageGenderDistributionControl.UpdateData(this.demographics);
                 }
 

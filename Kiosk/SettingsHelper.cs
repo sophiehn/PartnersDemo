@@ -118,31 +118,32 @@ namespace IntelligentKioskSample
             object value = ApplicationData.Current.RoamingSettings.Values["FaceApiKey"];
             if (value != null)
             {
-                this.FaceApiKey = value.ToString();
+                //  this.FaceApiKey = value.ToString();
+                this.FaceApiKey = "635db0a6bc26463d81e4c3ce32471cb9";
             }
 
             value = ApplicationData.Current.RoamingSettings.Values["EmotionApiKey"];
             if (value != null)
             {
-                this.EmotionApiKey = value.ToString();
+                this.EmotionApiKey = "3d40a27a2ba34ee1a75a8d0ce39fadb8";
             }
 
             value = ApplicationData.Current.RoamingSettings.Values["VisionApiKey"];
             if (value != null)
             {
-                this.VisionApiKey = value.ToString();
+                this.VisionApiKey = "baf75a45e02f48c79e6e1b7939b951a2";
             }
 
             value = ApplicationData.Current.RoamingSettings.Values["BingSearchApiKey"];
             if (value != null)
             {
-                this.BingSearchApiKey = value.ToString();
+                this.BingSearchApiKey = "8ef2eb01495a47da9e04fb311b104d4d";
             }
 
             value = ApplicationData.Current.RoamingSettings.Values["BingAutoSuggestionApiKey"];
             if (value != null)
             {
-                this.BingAutoSuggestionApiKey = value.ToString();
+                this.BingAutoSuggestionApiKey = "983e20f6dd144f18ac1da1de28c3978d";
             }
 
             value = ApplicationData.Current.RoamingSettings.Values["WorkspaceKey"];
@@ -154,7 +155,7 @@ namespace IntelligentKioskSample
             value = ApplicationData.Current.RoamingSettings.Values["TextAnalyticsKey"];
             if (value != null)
             {
-                this.TextAnalyticsKey = value.ToString();
+                this.TextAnalyticsKey = "57ec0d34687949d190b95cab19194293";
             }
 
             value = ApplicationData.Current.RoamingSettings.Values["CameraName"];

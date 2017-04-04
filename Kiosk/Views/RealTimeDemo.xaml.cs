@@ -65,9 +65,10 @@ namespace IntelligentKioskSample.Views
         private IEnumerable<Face> lastDetectedFaceSample;
         private IEnumerable<Tuple<Face, IdentifiedPerson>> lastIdentifiedPersonSample;
         private IEnumerable<SimilarFaceMatch> lastSimilarPersistedFaceSample;
-
+        CommunicateWithIoTHub dataToHub = new CommunicateWithIoTHub();
         private DemographicsData demographics;
         private Dictionary<Guid, Visitor> visitors = new Dictionary<Guid, Visitor>();
+        EmotionScores averageScores;
 
         public RealTimeDemo()
         {
@@ -96,7 +97,6 @@ namespace IntelligentKioskSample.Views
                 this.processingLoopTask = Task.Run(() => this.ProcessingLoop());
             }
         }
-
 
         private async void ProcessingLoop()
         {
@@ -169,7 +169,7 @@ namespace IntelligentKioskSample.Views
             {
                 this.lastEmotionSample = e.DetectedEmotion;
 
-                EmotionScores averageScores = new EmotionScores
+                averageScores = new EmotionScores
                 {
                     Happiness = e.DetectedEmotion.Average(em => em.Scores.Happiness),
                     Anger = e.DetectedEmotion.Average(em => em.Scores.Anger),
@@ -180,7 +180,6 @@ namespace IntelligentKioskSample.Views
                     Fear = e.DetectedEmotion.Average(em => em.Scores.Fear),
                     Surprise = e.DetectedEmotion.Average(em => em.Scores.Surprise)
                 };
-
                 this.emotionDataTimelineControl.DrawEmotionData(averageScores);
             }
 
@@ -212,6 +211,14 @@ namespace IntelligentKioskSample.Views
             else
             {
                 this.lastSimilarPersistedFaceSample = e.SimilarFaceMatches;
+                foreach (var item in e.SimilarFaceMatches)
+                {
+                    if (string.Compare(item.Face.FaceAttributes.Gender, "male", StringComparison.OrdinalIgnoreCase) == 0)
+                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Male");
+                    else
+                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Female");
+                }
+
             }
 
             this.UpdateDemographics(e);
@@ -257,6 +264,7 @@ namespace IntelligentKioskSample.Views
                 // Update the Visitor collection (either add new entry or update existing)
                 foreach (var item in this.lastSimilarPersistedFaceSample)
                 {
+
                     Visitor visitor;
                     if (this.visitors.TryGetValue(item.SimilarPersistedFace.PersistedFaceId, out visitor))
                     {
@@ -276,11 +284,13 @@ namespace IntelligentKioskSample.Views
                         {
                             this.demographics.OverallMaleCount++;
                             genderBasedAgeDistribution = this.demographics.AgeGenderDistribution.MaleDistribution;
+                          //  dataToHub.SendEmotions(averageScores.ToRankedList(), "Male");
                         }
                         else
                         {
                             this.demographics.OverallFemaleCount++;
                             genderBasedAgeDistribution = this.demographics.AgeGenderDistribution.FemaleDistribution;
+                          //  dataToHub.SendEmotions(averageScores.ToRankedList(), "Female");
                         }
 
                         if (item.Face.FaceAttributes.Age < 16)

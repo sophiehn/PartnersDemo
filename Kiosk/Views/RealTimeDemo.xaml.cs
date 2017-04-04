@@ -214,9 +214,9 @@ namespace IntelligentKioskSample.Views
                 foreach (var item in e.SimilarFaceMatches)
                 {
                     if (string.Compare(item.Face.FaceAttributes.Gender, "male", StringComparison.OrdinalIgnoreCase) == 0)
-                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Male");
+                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Male", item.Face.FaceAttributes.Age.ToString("0"));
                     else
-                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Female");
+                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Female", item.Face.FaceAttributes.Age.ToString("0"));
                 }
 
             }

@@ -14,13 +14,13 @@ namespace IntelligentKioskSample
         string iotHubUri = "PartnersHub.azure-devices.net";
         string deviceKey = "qcE/mE8D63k0w4o0+muPXNk9Fzlwhvyo8EtVPLZ14m0=";
 
-        public void SendEmotions(IEnumerable<KeyValuePair<string, float>> EmotionsScores, String Gender)
+        public void SendEmotions(IEnumerable<KeyValuePair<string, float>> EmotionsScores, String Gender, String Age)
         {
             deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("RBPi3", deviceKey), TransportType.Http1);
-            SendEmotionsToCloudMessagesAsync(EmotionsScores, Gender);
+            SendEmotionsToCloudMessagesAsync(EmotionsScores, Gender, Age);
         }
 
-        private async void SendEmotionsToCloudMessagesAsync(IEnumerable<KeyValuePair<string, float>> EmotionsScores, string Gender)
+        private async void SendEmotionsToCloudMessagesAsync(IEnumerable<KeyValuePair<string, float>> EmotionsScores, string gender, string age)
         {
             List<KeyValuePair<string, float>> emotions = new List<KeyValuePair<string, float>>();
             string happiness = "";
@@ -31,6 +31,8 @@ namespace IntelligentKioskSample
             string surprise = "";
             string contempt = "";
             string sadness = "";
+            float score = 0;
+            string emotion = "";
 
             foreach (var item in EmotionsScores)
             {
@@ -52,8 +54,6 @@ namespace IntelligentKioskSample
                     contempt = item.Value.ToString("0.000");
             }
 
-            float score = 0;
-            string emotion = "";
 
             foreach (var item in EmotionsScores)
             {
@@ -66,7 +66,8 @@ namespace IntelligentKioskSample
 
             var telemetryDataPoint = new
             {
-                Gender = Gender,
+                Gender = gender,
+                Age = age,
                 Happiness = happiness,
                 Disgust = disgust,
                 Fear = fear,
@@ -80,15 +81,6 @@ namespace IntelligentKioskSample
 
             var messageString = JsonConvert.SerializeObject(telemetryDataPoint);
             var message = new Message(Encoding.ASCII.GetBytes(messageString));
-
-            //string messageString = "Emotions Detected";
-            //var message = new Message(Encoding.ASCII.GetBytes(messageString));
-
-            //foreach (var item in EmotionsScores)
-            //{
-            //    message.Properties.Add(item.Key, item.Value.ToString("0.000"));
-            //}
-
             await deviceClient.SendEventAsync(message);
         }
 

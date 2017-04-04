@@ -22,9 +22,9 @@
     <SccProvider>SAK</SccProvider>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>899D660B6D0731596A1CAEE79BA8B65280A9CFCE</PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>IntelligentKiosk_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>6329C6A7340DD0F4FDFB2707FF1B80E2EFEE9BAE</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>IntelligentKioskSample_TemporaryKey.pfx</PackageCertificateKeyFile>
     <ApplicationInsightsResourceId />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -97,6 +97,7 @@
     <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="IntelligentKioskSample_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="project.json" />
   </ItemGroup>
@@ -222,10 +223,20 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\BadgeLogo.scale-100.png" />
+    <Content Include="Assets\BadgeLogo.scale-125.png" />
+    <Content Include="Assets\BadgeLogo.scale-150.png" />
+    <Content Include="Assets\BadgeLogo.scale-200.png" />
+    <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\BingNewsAnalytics.png" />
     <Content Include="Assets\camera.png" />
     <Content Include="Assets\female.png" />
     <Content Include="Assets\GreetingKiosk.JPG" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
     <Content Include="Assets\male_blue.png" />
     <Content Include="Assets\EmotionRecognition.PNG" />
     <Content Include="Assets\FaceAPI.PNG" />
@@ -236,10 +247,50 @@
     <Content Include="Assets\RealtimeDriverMonitoring.jpg" />
     <Content Include="Assets\RealTimeFromVideo.PNG" />
     <Content Include="Assets\smalltile-sdk.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
     <Content Include="Assets\splash-sdk.png" />
+    <Content Include="Assets\splash-sdk.scale-100.png" />
+    <Content Include="Assets\splash-sdk.scale-125.png" />
+    <Content Include="Assets\splash-sdk.scale-150.png" />
+    <Content Include="Assets\splash-sdk.scale-200.png" />
+    <Content Include="Assets\splash-sdk.scale-400.png" />
+    <Content Include="Assets\squaretile-sdk-44.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\squaretile-sdk-44.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\squaretile-sdk-44.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\squaretile-sdk-44.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\squaretile-sdk-44.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\squaretile-sdk-44.scale-100.png" />
+    <Content Include="Assets\squaretile-sdk-44.scale-125.png" />
+    <Content Include="Assets\squaretile-sdk-44.scale-150.png" />
+    <Content Include="Assets\squaretile-sdk-44.scale-200.png" />
+    <Content Include="Assets\squaretile-sdk-44.scale-400.png" />
+    <Content Include="Assets\squaretile-sdk-44.targetsize-16.png" />
+    <Content Include="Assets\squaretile-sdk-44.targetsize-24.png" />
+    <Content Include="Assets\squaretile-sdk-44.targetsize-256.png" />
+    <Content Include="Assets\squaretile-sdk-44.targetsize-32.png" />
+    <Content Include="Assets\squaretile-sdk-44.targetsize-48.png" />
+    <Content Include="Assets\squaretile-sdk.scale-100.png" />
+    <Content Include="Assets\squaretile-sdk.scale-125.png" />
+    <Content Include="Assets\squaretile-sdk.scale-150.png" />
+    <Content Include="Assets\squaretile-sdk.scale-200.png" />
+    <Content Include="Assets\squaretile-sdk.scale-400.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\squaretile-sdk.png" />
     <Content Include="Assets\squaretile-sdk-44.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\WideTile.scale-100.png" />
+    <Content Include="Assets\WideTile.scale-125.png" />
+    <Content Include="Assets\WideTile.scale-150.png" />
+    <Content Include="Assets\WideTile.scale-200.png" />
+    <Content Include="Assets\WideTile.scale-400.png" />
     <Content Include="Properties\Default.rd.xml">
       <SubType>Designer</SubType>
     </Content>

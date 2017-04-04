@@ -115,48 +115,48 @@ namespace IntelligentKioskSample
 
         private async void LoadRoamingSettings()
         {
-            object value = ApplicationData.Current.RoamingSettings.Values["FaceApiKey"];
-            if (value != null)
-            {
+            //object value = ApplicationData.Current.RoamingSettings.Values["FaceApiKey"];
+            //if (value != null)
+            //{
                 //  this.FaceApiKey = value.ToString();
                 this.FaceApiKey = "635db0a6bc26463d81e4c3ce32471cb9";
-            }
+            //}
 
-            value = ApplicationData.Current.RoamingSettings.Values["EmotionApiKey"];
-            if (value != null)
-            {
+           // value = ApplicationData.Current.RoamingSettings.Values["EmotionApiKey"];
+            //if (value != null)
+           // {
                 this.EmotionApiKey = "3d40a27a2ba34ee1a75a8d0ce39fadb8";
-            }
+           // }
 
-            value = ApplicationData.Current.RoamingSettings.Values["VisionApiKey"];
-            if (value != null)
-            {
+            //value = ApplicationData.Current.RoamingSettings.Values["VisionApiKey"];
+           // if (value != null)
+           // {
                 this.VisionApiKey = "baf75a45e02f48c79e6e1b7939b951a2";
-            }
+           // }
 
-            value = ApplicationData.Current.RoamingSettings.Values["BingSearchApiKey"];
-            if (value != null)
-            {
+          //  value = ApplicationData.Current.RoamingSettings.Values["BingSearchApiKey"];
+          //  if (value != null)
+            //{
                 this.BingSearchApiKey = "8ef2eb01495a47da9e04fb311b104d4d";
-            }
+           // }
 
-            value = ApplicationData.Current.RoamingSettings.Values["BingAutoSuggestionApiKey"];
-            if (value != null)
-            {
+            //value = ApplicationData.Current.RoamingSettings.Values["BingAutoSuggestionApiKey"];
+            //if (value != null)
+            //{
                 this.BingAutoSuggestionApiKey = "983e20f6dd144f18ac1da1de28c3978d";
-            }
+            //  }
 
-            value = ApplicationData.Current.RoamingSettings.Values["WorkspaceKey"];
+            object value   = ApplicationData.Current.RoamingSettings.Values["WorkspaceKey"];
             if (value != null)
             {
                 this.WorkspaceKey = value.ToString();
             }
 
-            value = ApplicationData.Current.RoamingSettings.Values["TextAnalyticsKey"];
-            if (value != null)
-            {
+            //value = ApplicationData.Current.RoamingSettings.Values["TextAnalyticsKey"];
+            //if (value != null)
+            //{
                 this.TextAnalyticsKey = "57ec0d34687949d190b95cab19194293";
-            }
+           // }
 
             value = ApplicationData.Current.RoamingSettings.Values["CameraName"];
             if (value != null)

@@ -115,11 +115,21 @@ namespace IntelligentKioskSample
 
         private async void LoadRoamingSettings()
         {
+            object value = ApplicationData.Current.RoamingSettings.Values["DeviceName"];
+            if (value != null)
+            {
+                this.DeviceName = value.ToString();
+            }
+            value = ApplicationData.Current.RoamingSettings.Values["DeviceKey"];
+            if (value != null)
+            {
+                this.DeviceKey = value.ToString();
+            }
             //object value = ApplicationData.Current.RoamingSettings.Values["FaceApiKey"];
             //if (value != null)
             //{
-                //  this.FaceApiKey = value.ToString();
-                this.FaceApiKey = "635db0a6bc26463d81e4c3ce32471cb9";
+            //  this.FaceApiKey = value.ToString();
+            this.FaceApiKey = "635db0a6bc26463d81e4c3ce32471cb9";
             //}
 
            // value = ApplicationData.Current.RoamingSettings.Values["EmotionApiKey"];
@@ -146,7 +156,7 @@ namespace IntelligentKioskSample
                 this.BingAutoSuggestionApiKey = "983e20f6dd144f18ac1da1de28c3978d";
             //  }
 
-            object value   = ApplicationData.Current.RoamingSettings.Values["WorkspaceKey"];
+             value   = ApplicationData.Current.RoamingSettings.Values["WorkspaceKey"];
             if (value != null)
             {
                 this.WorkspaceKey = value.ToString();
@@ -372,6 +382,28 @@ namespace IntelligentKioskSample
             {
                 this.driverMonitoringYawningThreshold = value;
                 this.OnSettingChanged("DriverMonitoringYawningThreshold", value);
+            }
+        }
+
+
+        private string deviceName = string.Empty;
+        public string DeviceName {
+            get { return deviceName; }
+            set
+            {
+                this.deviceName = value;
+                this.OnSettingChanged("DeviceName", value);
+            }
+        }
+
+        private string deviceKey = string.Empty;
+        public string DeviceKey
+        {
+            get { return deviceKey; }
+            set
+            {
+                this.deviceKey = value;
+                this.OnSettingChanged("DeviceKey", value);
             }
         }
     }

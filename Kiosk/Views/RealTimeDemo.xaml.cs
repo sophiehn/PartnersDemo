@@ -41,6 +41,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Windows.Graphics.Imaging;
+using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -60,7 +61,8 @@ namespace IntelligentKioskSample.Views
         private Task processingLoopTask;
         private bool isProcessingLoopInProgress;
         private bool isProcessingPhoto;
-
+        string deviceName = "";
+        string deviceKey = "";
         private IEnumerable<Emotion> lastEmotionSample;
         private IEnumerable<Face> lastDetectedFaceSample;
         private IEnumerable<Tuple<Face, IdentifiedPerson>> lastIdentifiedPersonSample;
@@ -150,7 +152,6 @@ namespace IntelligentKioskSample.Views
                 this.lastSimilarPersistedFaceSample = null;
                 this.lastEmotionSample = null;
                 this.debugText.Text = "";
-
                 this.isProcessingPhoto = false;
                 return;
             }
@@ -211,19 +212,31 @@ namespace IntelligentKioskSample.Views
             else
             {
                 this.lastSimilarPersistedFaceSample = e.SimilarFaceMatches;
-                foreach (var item in e.SimilarFaceMatches)
+                if (ApplicationData.Current.RoamingSettings.Values.ContainsKey("DeviceName"))
                 {
-                    if (string.Compare(item.Face.FaceAttributes.Gender, "male", StringComparison.OrdinalIgnoreCase) == 0)
-                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Male", item.Face.FaceAttributes.Age.ToString("0"));
-                    else
-                        dataToHub.SendEmotions(averageScores.ToRankedList(), "Female", item.Face.FaceAttributes.Age.ToString("0"));
-                }
+                    deviceName = ApplicationData.Current.RoamingSettings.Values["DeviceName"].ToString();
+                    deviceKey = ApplicationData.Current.RoamingSettings.Values["DeviceKey"].ToString();
 
+                    foreach (var item in e.SimilarFaceMatches)
+                    {
+
+                        if (string.Compare(item.Face.FaceAttributes.Gender, "male", StringComparison.OrdinalIgnoreCase) == 0)
+                            dataToHub.SendEmotions(averageScores.ToRankedList(), "Male", item.Face.FaceAttributes.Age.ToString("0"), deviceName, deviceKey);
+                        else
+                            dataToHub.SendEmotions(averageScores.ToRankedList(), "Female", item.Face.FaceAttributes.Age.ToString("0"), deviceName, deviceKey);
+                    }
+                }
+                else
+                {
+                    MessageDialog dialog = new MessageDialog("Make sure your device name and key are correct","IoT Hub Parameters missing..");
+                    await dialog.ShowAsync();
+                }
+                
             }
 
             this.UpdateDemographics(e);
 
-            this.debugText.Text = string.Format("Latency: {0}ms", (int)(DateTime.Now - start).TotalMilliseconds);
+            //   this.debugText.Text = string.Format("Latency: {0}ms", (int)(DateTime.Now - start).TotalMilliseconds);
 
             this.isProcessingPhoto = false;
         }
@@ -284,13 +297,13 @@ namespace IntelligentKioskSample.Views
                         {
                             this.demographics.OverallMaleCount++;
                             genderBasedAgeDistribution = this.demographics.AgeGenderDistribution.MaleDistribution;
-                          //  dataToHub.SendEmotions(averageScores.ToRankedList(), "Male");
+                            //  dataToHub.SendEmotions(averageScores.ToRankedList(), "Male");
                         }
                         else
                         {
                             this.demographics.OverallFemaleCount++;
                             genderBasedAgeDistribution = this.demographics.AgeGenderDistribution.FemaleDistribution;
-                          //  dataToHub.SendEmotions(averageScores.ToRankedList(), "Female");
+                            //  dataToHub.SendEmotions(averageScores.ToRankedList(), "Female");
                         }
 
                         if (item.Face.FaceAttributes.Age < 16)
@@ -361,11 +374,11 @@ namespace IntelligentKioskSample.Views
 
         private void EnterKioskMode()
         {
-            ApplicationView view = ApplicationView.GetForCurrentView();
-            if (!view.IsFullScreenMode)
-            {
-                view.TryEnterFullScreenMode();
-            }
+            //ApplicationView view = ApplicationView.GetForCurrentView();
+            //if (!view.IsFullScreenMode)
+            //{
+            //    view.TryEnterFullScreenMode();
+            //}
         }
 
         protected override async void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -373,9 +386,7 @@ namespace IntelligentKioskSample.Views
             this.isProcessingLoopInProgress = false;
             Window.Current.Activated -= CurrentWindowActivationStateChanged;
             this.cameraControl.CameraAspectRatioChanged -= CameraControl_CameraAspectRatioChanged;
-
             await this.ResetDemographicsData();
-
             await this.cameraControl.StopStreamAsync();
             base.OnNavigatingFrom(e);
         }

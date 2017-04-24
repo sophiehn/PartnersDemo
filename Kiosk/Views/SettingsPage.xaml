@@ -73,6 +73,14 @@
                         <TextBlock Text="Text Analytics Key" Style="{StaticResource BodyTextBlockStyle}" Margin="0"  />
                         <PasswordBox Password="{Binding TextAnalyticsKey, Mode=TwoWay}" />
                     </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <TextBlock Text="Device Name" Style="{StaticResource BodyTextBlockStyle}" Margin="0"  />
+                        <TextBox Text="{Binding DeviceName, Mode=TwoWay}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                        <TextBlock Text="Device Key" Style="{StaticResource BodyTextBlockStyle}" Margin="0"  />
+                        <TextBox Text="{Binding DeviceKey, Mode=TwoWay}" />
+                    </StackPanel>
 
                 </StackPanel>
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace IntelligentKioskSample
 {
@@ -12,11 +13,11 @@ namespace IntelligentKioskSample
     {
         DeviceClient deviceClient;
         string iotHubUri = "PartnersHub.azure-devices.net";
-        string deviceKey = "qcE/mE8D63k0w4o0+muPXNk9Fzlwhvyo8EtVPLZ14m0=";
+       // string deviceKey = "9dDXRgKlzyU4jddIi4ez1CIiNCCebm3r2sPgkRVDxMo=";
 
-        public void SendEmotions(IEnumerable<KeyValuePair<string, float>> EmotionsScores, String Gender, String Age)
+        public void SendEmotions(IEnumerable<KeyValuePair<string, float>> EmotionsScores, String Gender, String Age, string DeviceName, string deviceKey)
         {
-            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey("RBPi3", deviceKey), TransportType.Http1);
+            deviceClient = DeviceClient.Create(iotHubUri, new DeviceAuthenticationWithRegistrySymmetricKey(DeviceName, deviceKey), TransportType.Http1);
             SendEmotionsToCloudMessagesAsync(EmotionsScores, Gender, Age);
         }
 
@@ -66,6 +67,7 @@ namespace IntelligentKioskSample
 
             var telemetryDataPoint = new
             {
+                Device = ApplicationData.Current.RoamingSettings.Values["DeviceName"].ToString(),
                 Gender = gender,
                 Age = age,
                 Happiness = happiness,

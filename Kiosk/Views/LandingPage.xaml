@@ -24,29 +24,8 @@
 
         <ScrollViewer Grid.Row="1" EntranceNavigationTransitionInfo.IsTargetElement="True">
             <StackPanel Margin="12">
-                <TextBlock Style="{ThemeResource BodyTextBlockStyle}">Welcome to the Intelligent Kiosk Sample! Here you will find several demos showcasing 
-                    workflows and experiences built on top of the Microsoft Cognitive Services. 
-                </TextBlock>
-
-                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Margin="0,12">The kiosk is an example of an intelligent application, one that can understand human faces and predict their age, gender and emotion. It can do so from live
-                    images from a web cam, Bing Images or local photos. It also allows you to very quickly create and train a model to perform face identification against any pre-determined set of faces.
-                </TextBlock>
-
-                <Image Stretch="Uniform" Source="ms-appx:///Assets/oxford-face.png" MaxWidth="350" HorizontalAlignment="Center" Margin="0,12,0,0" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBlock VerticalAlignment="Center">For more information visit</TextBlock>
-                    <HyperlinkButton Margin="4,0,0,0" Content="Microsoft Cognitive Services" NavigateUri="https://www.microsoft.com/cognitive-services"/>
-                </StackPanel>
+                <Image Stretch="Uniform" Source="ms-appx:///Assets/capture.png" HorizontalAlignment="Center" Margin="0,12,0,0" />
             </StackPanel>
         </ScrollViewer>
-
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="12">
-            <SymbolIcon Symbol="Library" VerticalAlignment="Top"/>
-            <StackPanel Margin="6,0,0,0" >
-                <TextBlock Text="- Start by entering API Keys in the Settings Page (they will persist between sessions)." Style="{StaticResource CaptionTextBlockStyle}" />
-                <TextBlock Text="- Use the Face Identification Setup page if you want to train the kiosk to identify specific people." Style="{StaticResource CaptionTextBlockStyle}" />
-                <TextBlock Text="- If you have multiple cameras, a camera selector is available in the Settings Page." Style="{StaticResource CaptionTextBlockStyle}" />
-            </StackPanel>
-        </StackPanel>
     </Grid>
 </Page>

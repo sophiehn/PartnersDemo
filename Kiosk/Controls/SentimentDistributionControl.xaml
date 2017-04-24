@@ -24,7 +24,7 @@
         <x:Double x:Key="Double09">0.9</x:Double>
         <x:Double x:Key="Double10">1.0</x:Double>
 
-        <views:SentimentToColorConverter x:Key="SentimentToColorConverter"/>
+       <!-- <views:SentimentToColorConverter x:Key="SentimentToColorConverter"/> -->
         
     </UserControl.Resources>
     

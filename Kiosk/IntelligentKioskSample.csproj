@@ -20,9 +20,9 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <PackageCertificateThumbprint>6329C6A7340DD0F4FDFB2707FF1B80E2EFEE9BAE</PackageCertificateThumbprint>
     <PackageCertificateKeyFile>IntelligentKioskSample_TemporaryKey.pfx</PackageCertificateKeyFile>
     <ApplicationInsightsResourceId />
@@ -163,36 +163,15 @@
     <Compile Include="NavMenuItem.cs" />
     <Compile Include="SettingsHelper.cs" />
     <Compile Include="Util.cs" />
-    <Compile Include="Views\BingNewsAnalytics.xaml.cs">
-      <DependentUpon>BingNewsAnalytics.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\DemoLauncherPage.xaml.cs">
       <DependentUpon>DemoLauncherPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\GreetingKiosk.xaml.cs">
-      <DependentUpon>GreetingKiosk.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MallKioskPage.xaml.cs">
-      <DependentUpon>MallKioskPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MallKioskDemoConfig\MallKioskDemoSettings.cs" />
     <Compile Include="Views\RealTimeDemo.xaml.cs">
       <DependentUpon>RealTimeDemo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AutomaticPhotoCapturePage.xaml.cs">
-      <DependentUpon>AutomaticPhotoCapturePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PersonDetailsPage.xaml.cs">
-      <DependentUpon>PersonDetailsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EmotionRecognitionPage.xaml.cs">
-      <DependentUpon>EmotionRecognitionPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\RealtimeDriverMonitoring.xaml.cs">
       <DependentUpon>RealtimeDriverMonitoring.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RecognitionPage.xaml.cs">
-      <DependentUpon>RecognitionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -200,21 +179,12 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PersonGroupDetailsPage.xaml.cs">
-      <DependentUpon>PersonGroupDetailsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PersonGroupsPage.xaml.cs">
-      <DependentUpon>PersonGroupsPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\LandingPage.xaml.cs">
       <DependentUpon>LandingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\ImageSearchUserControl.xaml.cs">
       <DependentUpon>ImageSearchUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\VideoInsightsPage.xaml.cs">
-      <DependentUpon>VideoInsightsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +200,9 @@
     <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\BingNewsAnalytics.png" />
     <Content Include="Assets\camera.png" />
+    <Content Include="Assets\Capture.PNG" />
+    <Content Include="Assets\Capture2.PNG" />
+    <Content Include="Assets\Capture3.PNG" />
     <Content Include="Assets\female.png" />
     <Content Include="Assets\GreetingKiosk.JPG" />
     <Content Include="Assets\LargeTile.scale-100.png" />
@@ -242,6 +215,7 @@
     <Content Include="Assets\FaceAPI.PNG" />
     <Content Include="Assets\male.png" />
     <Content Include="Assets\Mall.png" />
+    <Content Include="Assets\microsoft_summit.jpg" />
     <Content Include="Assets\oxford-face.png" />
     <Content Include="Assets\RealTime.PNG" />
     <Content Include="Assets\RealtimeDriverMonitoring.jpg" />
@@ -375,59 +349,23 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
-    <Page Include="Views\BingNewsAnalytics.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\DemoLauncherPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\GreetingKiosk.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\MallKioskPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RealTimeDemo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AutomaticPhotoCapturePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PersonDetailsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\EmotionRecognitionPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\RealtimeDriverMonitoring.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\RecognitionPage.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppShell.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PersonGroupDetailsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PersonGroupsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -438,10 +376,6 @@
     <Page Include="Controls\ImageSearchUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\VideoInsightsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

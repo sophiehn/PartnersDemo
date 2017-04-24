@@ -13,7 +13,6 @@ namespace IntelligentKioskSample
     {
         DeviceClient deviceClient;
         string iotHubUri = "PartnersHub.azure-devices.net";
-       // string deviceKey = "9dDXRgKlzyU4jddIi4ez1CIiNCCebm3r2sPgkRVDxMo=";
 
         public void SendEmotions(IEnumerable<KeyValuePair<string, float>> EmotionsScores, String Gender, String Age, string DeviceName, string deviceKey)
         {

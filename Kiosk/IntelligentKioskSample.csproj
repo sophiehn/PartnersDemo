@@ -167,6 +167,9 @@
       <DependentUpon>DemoLauncherPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MallKioskDemoConfig\MallKioskDemoSettings.cs" />
+    <Compile Include="Views\MallKioskPage.xaml.cs">
+      <DependentUpon>MallKioskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RealTimeDemo.xaml.cs">
       <DependentUpon>RealTimeDemo.xaml</DependentUpon>
     </Compile>
@@ -352,6 +355,10 @@
     <Page Include="Views\DemoLauncherPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MallKioskPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\RealTimeDemo.xaml">
       <Generator>MSBuild:Compile</Generator>

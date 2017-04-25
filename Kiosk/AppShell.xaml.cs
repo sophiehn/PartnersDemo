@@ -49,6 +49,13 @@ namespace IntelligentKioskSample
 
                 new NavMenuItem()
                 {
+                    Symbol = Symbol.Shop,
+                    Label = "Mall Kiosk",
+                    DestPage = typeof(MallKioskPage)
+                },
+
+                new NavMenuItem()
+                {
                     Symbol = Symbol.Setting,
                     Label = "Settings",
                     DestPage = typeof(SettingsPage)

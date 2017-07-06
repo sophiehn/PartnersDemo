@@ -164,7 +164,8 @@ namespace IntelligentKioskSample
             this.VisionApiKey = "baf75a45e02f48c79e6e1b7939b951a2";
             this.BingSearchApiKey = "8ef2eb01495a47da9e04fb311b104d4d";
             this.BingAutoSuggestionApiKey = "983e20f6dd144f18ac1da1de28c3978d";
-
+            ApplicationData.Current.RoamingSettings.Values["DeviceName"] = "Booth1";
+            ApplicationData.Current.RoamingSettings.Values["DeviceKey"] = "rmVccXMET3ccJTIwTOosRG1ti9HZFLHIzFNN6aZDX54=";
             object value = ApplicationData.Current.RoamingSettings.Values["DeviceName"];
             if (value != null)
             {

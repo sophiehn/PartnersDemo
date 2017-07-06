@@ -374,11 +374,11 @@ namespace IntelligentKioskSample.Views
 
         private void EnterKioskMode()
         {
-            //ApplicationView view = ApplicationView.GetForCurrentView();
-            //if (!view.IsFullScreenMode)
-            //{
-            //    view.TryEnterFullScreenMode();
-            //}
+            ApplicationView view = ApplicationView.GetForCurrentView();
+            if (!view.IsFullScreenMode)
+            {
+                view.TryEnterFullScreenMode();
+            }
         }
 
         protected override async void OnNavigatingFrom(NavigatingCancelEventArgs e)

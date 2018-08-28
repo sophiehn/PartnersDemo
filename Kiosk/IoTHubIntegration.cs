@@ -9,7 +9,7 @@ using Windows.Storage;
 
 namespace IntelligentKioskSample
 {
-    public class CommunicateWithIoTHub
+    public class IoTHubIntegration
     {
         DeviceClient deviceClient;
         string iotHubUri = "PartnersHub.azure-devices.net";

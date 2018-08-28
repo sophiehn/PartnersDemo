@@ -29,7 +29,7 @@ namespace IntelligentKioskSample
                 new NavMenuItem()
                 {
                     Symbol = Symbol.Home,
-                    Label = LandingPage.Title,
+                    Label = "Welcome",
                     DestPage = typeof(LandingPage)
                 },
 
@@ -47,12 +47,12 @@ namespace IntelligentKioskSample
                 //    DestPage = typeof(PersonGroupsPage)
                 //},
 
-                new NavMenuItem()
-                {
-                    Symbol = Symbol.Shop,
-                    Label = "Mall Kiosk",
-                    DestPage = typeof(MallKioskPage)
-                },
+                //new NavMenuItem()
+                //{
+                //    Symbol = Symbol.Shop,
+                //    Label = "Mall Kiosk",
+                //    DestPage = typeof(MallKioskPage)
+                //},
 
                 new NavMenuItem()
                 {

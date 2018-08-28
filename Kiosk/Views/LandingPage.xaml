@@ -18,13 +18,14 @@
 
         <c:PageHeader x:Name="pageHeader">
             <c:PageHeader.HeaderContent>
-                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="OVERVIEW"/>
+                <TextBlock x:Name="title" Style="{ThemeResource PageTitleTextBlockStyle}" Text="Microsoft CEE START FY19-Welcome to the Intelligent Kiosk"/>
             </c:PageHeader.HeaderContent>
         </c:PageHeader>
 
         <ScrollViewer Grid.Row="1" EntranceNavigationTransitionInfo.IsTargetElement="True">
             <StackPanel Margin="12">
-                <Image Stretch="Uniform" Source="ms-appx:///Assets/capture.png" HorizontalAlignment="Center" Margin="0,12,0,0" />
+                <TextBlock TextAlignment="Center" Text="Click on the Menu Bar to the left to get started"></TextBlock>
+                <Image Stretch="Uniform" Source="ms-appx:///Assets/intelligent-kiosk-emotion-api-1.png" HorizontalAlignment="Center" Margin="0,12,0,0" />
             </StackPanel>
         </ScrollViewer>
     </Grid>

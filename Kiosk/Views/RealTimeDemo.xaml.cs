@@ -67,7 +67,7 @@ namespace IntelligentKioskSample.Views
         private IEnumerable<Face> lastDetectedFaceSample;
         private IEnumerable<Tuple<Face, IdentifiedPerson>> lastIdentifiedPersonSample;
         private IEnumerable<SimilarFaceMatch> lastSimilarPersistedFaceSample;
-        CommunicateWithIoTHub dataToHub = new CommunicateWithIoTHub();
+        IoTHubIntegration dataToHub = new IoTHubIntegration();
         private DemographicsData demographics;
         private Dictionary<Guid, Visitor> visitors = new Dictionary<Guid, Visitor>();
         EmotionScores averageScores;
